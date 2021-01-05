@@ -12,6 +12,9 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+<<<<<<< HEAD
 
 # Ignore Gradle build output directory
 build
+=======
+>>>>>>> 3fa1750b515726700470430d60b61e69d983af78
