@@ -1,9 +1,3 @@
-/*
-	forma de invocación de método call:
-	def ejecucion = load 'script.groovy'
-	ejecucion.call()
-*/
-
 def call(){
     
     stage('compile') {
@@ -28,7 +22,7 @@ def call(){
         }
     }
 
-    stage('Nexus') {
+    stage('nexus') {
         nexusPublisher nexusInstanceId: 'NexusLocal',
             nexusRepositoryId: 'test-nexus',
             packages: [

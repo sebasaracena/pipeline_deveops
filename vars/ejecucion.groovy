@@ -9,24 +9,25 @@ def call(){
                 choices: ['Maven', 'Gradle'],
                 description: 'Seleccione herramienta de compilacion'
             )
+            string(
+                name: 'stage',
+                defaultValue: '',
+                description: 'Seleccione stage a ejecutar (Dejar en blanco para ejecutar todos)'
+            )
         }
 
         stages {
             stage('pipeline') {
                 steps {
                     script {
-
-                        params.compileTool
-
+                        
                         switch(params.compileTool)
                         {
                             case 'Maven':
-                                //def ejecucion = load 'maven.groovy'
-                                maven.call()
+                                maven.call(stage)
                             break;
                             case 'Gradle':
-                                //def ejecucion = load 'gradle.groovy'
-                                gradle.call()
+                                gradle.call(stage)
                             break;
                         }
                     }
