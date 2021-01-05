@@ -1,4 +1,6 @@
-def validateStage(stage, stages) {
+def validateStage(stage) {
+
+    def stages = params.stage.tokenize(';')
     
     if(stages.contains(stage) || stages.size()==0) return true
     

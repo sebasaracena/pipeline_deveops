@@ -1,29 +1,27 @@
 def call(){
-
-    def stages = params.stage.tokenize(';')
     
-    if(util.validateStage('compile', stages))
+    if(util.validateStage('compile'))
     {
         stage('compile') {
             bat './mvnw.cmd clean compile -e'
         }
     }
 
-    if(util.validateStage('test', stages))
+    if(util.validateStage('test'))
     {
         stage('test'){
             bat './mvnw.cmd clean test -e'
         }
     }
 
-    if(util.validateStage('jar', stages))
+    if(util.validateStage('jar'))
     {
         stage('jar'){
             bat './mvnw.cmd clean package -e'
         }
     }
 
-    if(util.validateStage('sonar', stages))
+    if(util.validateStage('sonar'))
     {
         stage('sonar') {
             // Nombre extraido desde Jenkins > Global tool configuration > SonarQube Scanner
@@ -36,7 +34,7 @@ def call(){
         }
     }
 
-    if(util.validateStage('nexus', stages))
+    if(util.validateStage('nexus'))
     {
         stage('nexus') {
             nexusPublisher nexusInstanceId: 'NexusLocal',
