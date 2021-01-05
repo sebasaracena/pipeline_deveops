@@ -1,6 +1,6 @@
-def call(stage){
+def call(){
 
-    def stages = stage.tokenize(';')
+    def stages = params.stage.tokenize(';')
 
     if(util.validateStage('build', stages) || util.validateStage('test', stages))
     {

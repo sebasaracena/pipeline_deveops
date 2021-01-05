@@ -24,10 +24,10 @@ def call(){
                         switch(params.compileTool)
                         {
                             case 'Maven':
-                                maven.call(params.stage)
+                                maven.call()
                             break;
                             case 'Gradle':
-                                gradle.call(params.stage)
+                                gradle.call()
                             break;
                         }
                     }
