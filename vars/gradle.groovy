@@ -2,14 +2,14 @@ def call(stage){
 
     def stages = stage.tokenize(';')
 
-    if(Util.validateStage('build', stages) || Util.validateStage('test', stages))
+    if(util.validateStage('build', stages) || util.validateStage('test', stages))
     {
         stage('build & test') {
             bat "gradle clean build"
         }
     }
 
-    if(Util.validateStage('sonar', stages))
+    if(util.validateStage('sonar', stages))
     {
         stage('sonar') {
             // Nombre extraido desde Jenkins > Global tool configuration > SonarQube Scanner
