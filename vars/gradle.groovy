@@ -22,38 +22,46 @@ def call(){
         }
     }
 
-    stage('run') {
-        bat 'start /B gradle bootRun'
-        sleep 20
+    if(util.validateStage('run', stages))
+    {
+        stage('run') {
+            bat 'start /B gradle bootRun'
+            sleep 20
+        }
     }
 
-    stage('rest') {
-        bat 'curl -X GET "http://localhost:8082/rest/mscovid/test?msg=testing"'
+    if(util.validateStage('rest', stages))
+    {
+        stage('rest') {
+            bat 'curl -X GET "http://localhost:8082/rest/mscovid/test?msg=testing"'
+        }
     }
 
-    stage('nexus') {
-        nexusPublisher nexusInstanceId: 'NexusLocal',
-            nexusRepositoryId: 'test-nexus',
-            packages: [
-                [
-                    $class: 'MavenPackage',
-                    mavenAssetList: [
-                        [
-                            classifier: '',
-                            extension: 'jar',
-                            filePath: 'C:\\proyects\\diplomado\\gradle\\ejemplo-gradle\\build\\DevOpsUsach2020-0.0.1.jar'
+    if(util.validateStage('nexus', stages))
+    {
+        stage('nexus') {
+            nexusPublisher nexusInstanceId: 'NexusLocal',
+                nexusRepositoryId: 'test-nexus',
+                packages: [
+                    [
+                        $class: 'MavenPackage',
+                        mavenAssetList: [
+                            [
+                                classifier: '',
+                                extension: 'jar',
+                                filePath: 'C:\\proyects\\diplomado\\gradle\\ejemplo-gradle\\build\\DevOpsUsach2020-0.0.1.jar'
+                            ]
+                        ],
+                        mavenCoordinate: [
+                            artifactId: 'DevOpsUsach2020',
+                            groupId: 'com.devopsusach2020',
+                            packaging: 'jar',
+                            version: '0.0.1'
                         ]
-                    ],
-                    mavenCoordinate: [
-                        artifactId: 'DevOpsUsach2020',
-                        groupId: 'com.devopsusach2020',
-                        packaging: 'jar',
-                        version: '0.0.1'
                     ]
                 ]
-            ]
+        }
     }
-
 }
 
 return this;
