@@ -1,4 +1,4 @@
-def call(){
+def call(stage){
     
     stage('compile') {
         bat './mvnw.cmd clean compile -e'
