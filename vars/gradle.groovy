@@ -10,7 +10,7 @@ def call(){
     if(util.validateStage('run'))
     {
         stage('run') {
-            bat 'start /B gradle bootRun'
+            sh 'JENKINS_NODE_COOKIE=dontKillMe nohup start gradlew bootRun &'
             sleep 20
         }
     }
@@ -18,7 +18,7 @@ def call(){
     if(util.validateStage('rest'))
     {
         stage('rest') {
-            bat 'curl -X GET "http://localhost:8082/rest/mscovid/test?msg=testing"'
+            bat 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
         }
     }
 
