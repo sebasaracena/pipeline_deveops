@@ -1,4 +1,5 @@
 def call(){
+<<<<<<< HEAD
 
     pipeline {
         agent any
@@ -39,3 +40,35 @@ def call(){
 }
 
 return this;
+=======
+  
+ pipeline {
+    agent any
+
+    stages {
+        stage('compile') {
+            steps {
+                
+                sh 'gradle clean build'
+                
+                
+            }
+        }
+      
+     
+        stage('run jar') {
+            steps {
+              
+                 sh 'JENKINS_NODE_COOKIE=dontKillMe nohup start gradlew bootRun &'
+               
+                
+            } 
+        }
+        
+    }
+}
+
+}
+
+return this;
+>>>>>>> bbbd4fa0ddffc8d130de95b0bf207cf7960fcdf4
