@@ -18,7 +18,7 @@ def call(){
     if(util.validateStage('rest'))
     {
         stage('rest') {
-            bat 'curl -X GET "http://localhost:8082/rest/mscovid/test?msg=testing"'
+            bat 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
         }
     }
 
