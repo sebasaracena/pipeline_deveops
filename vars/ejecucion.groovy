@@ -1,31 +1,43 @@
 def call(){
-  
- pipeline {
-    agent any
 
-    stages {
-        stage('compile') {
-            steps {
-                
-                sh 'gradle clean build'
-                
-                
+
+    pipeline {
+        agent any
+
+        parameters {
+            choice(
+                name:'compileTool',
+                choices: ['maven', 'gradle'],
+                description: 'Seleccione herramienta de compilacion'
+            )
+            string(
+                name: 'stage',
+                defaultValue: '',
+                description: 'Seleccione stage a ejecutar (Dejar en blanco para ejecutar todos)'
+            )
+        }
+
+        stages {
+            stage('pipeline') {
+                steps {
+                    script {
+                        
+                        switch(params.compileTool)
+                        {
+                            case 'maven':
+                                maven.call()
+                            break;
+                            case 'gradle':
+                                gradle.call()
+                            break;
+                        }
+                    }
+                }
             }
         }
-      
-     
-        stage('run jar') {
-            steps {
-              
-                 sh 'JENKINS_NODE_COOKIE=dontKillMe nohup start gradlew bootRun &'
-               
-                
-            } 
-        }
-        
     }
-}
 
 }
 
 return this;
+
