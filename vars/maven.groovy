@@ -3,7 +3,7 @@ def call(){
     if(util.validateStage('compile'))
     {
         stage('compile') {
-           echo env.BRANCH_NAME
+           figlet env.GIT_BRANCH
             sh './mvnw.cmd clean compile -e'
         }
     }
