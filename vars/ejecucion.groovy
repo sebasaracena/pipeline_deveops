@@ -23,7 +23,8 @@ def call(){
             stage('pipeline') {
                 steps {
                     script {
-                      sh 'env'            
+                      sh 'env'
+                          
                         switch(params.compileTool)
                         {
                             case 'maven':

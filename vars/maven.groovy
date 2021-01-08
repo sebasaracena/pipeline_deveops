@@ -3,7 +3,8 @@ def call(){
     if(util.validateStage('compile'))
     {
         stage('compile') {
-            bat './mvnw.cmd clean compile -e'
+           echo env.BRANCH_NAME
+            sh './mvnw.cmd clean compile -e'
         }
     }
 
