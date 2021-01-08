@@ -14,7 +14,7 @@ def call(){
     echo env.STAGE
     echo 'Esperando a que termine la descarga'
 	sleep(time: 10, unit: "SECONDS")
-     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup bash java -jar DevOpsUsach2020-1.0.0.jar &'
+     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup start java -jar DevOpsUsach2020-1.0.0.jar &'
    }
    }
    
