@@ -4,7 +4,7 @@ def call(){
         echo 'buena es de la rama release'
     }
     else if(env.GIT_BRANCH=='feature-librery' || env.GIT_BRANCH=='develop'){
-       echo 'no es de la rama realease'
+      mavenci.call()
 
     } 
 
