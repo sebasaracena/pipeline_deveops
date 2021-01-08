@@ -24,7 +24,7 @@ def call(){
        env.STAGE = 'sonar'
        figlet env.STAGE
         
-    withSonarQubeEnv(installationName: 'SonarQube') { 
+    withSonarQubeEnv(installationName: 'sonar') { 
       bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
     
             }
