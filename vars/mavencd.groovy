@@ -14,7 +14,7 @@ def call(){
     echo env.STAGE
     echo 'Esperando a que termine la descarga'
 	sleep(time: 10, unit: "SECONDS")
-    sh 'java -jar DevOpsUsach2020-1.0.0.jar'
+     sh 'JENKINS_NODE_COOKIE=dontKillMe nohup bash java -jar DevOpsUsach2020-1.0.0.jar &'
    }
    }
    
@@ -22,7 +22,8 @@ def call(){
     {
         stage('rest') {
             env.STAGE = 'rest'
-                echo env.STAGE
+            echo env.STAGE
+            sleep(time: 10, unit: "SECONDS")
             bat 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
         }
     }
