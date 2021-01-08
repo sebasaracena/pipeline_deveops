@@ -64,7 +64,7 @@ def call(){
   stage('nexusci'){
 	    env.STAGE = 'nexusci'
 	    figlet env.STAGE
-        nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'ejemplo-maven-gradle', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\Users\usuario}\.jenkins\workspace\ipeline-cicd_pipeline-ci_develop\build\DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
+        nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'ejemplo-maven-gradle', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "C:\Users\usuario}\.jenkins\workspace\ipeline-cicd_pipeline-ci_develop\build\DevOpsUsach2020-0.0.1.jar"]], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]
 	}
 }    
 
