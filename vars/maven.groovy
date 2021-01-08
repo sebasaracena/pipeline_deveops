@@ -14,12 +14,23 @@ def call(){
         }
     }
 
+   if(util.validateStage('sonar')) {
+   stage('sonar') {
+            steps {
+    withSonarQubeEnv(installationName: 'SonarQube') { 
+      bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+    }
+            }
+    }
+  }
+
     if(util.validateStage('jar'))
     {
         stage('jar'){
             bat './mvnw.cmd clean package -e'
         }
     }
+
      if(util.validateStage('run'))
     {
         stage('run'){
