@@ -1,46 +1,13 @@
 def call(){
     
-    if(util.validateStage('compile'))
-    {
-        stage('compile') {
-           figlet env.GIT_BRANCH
-            sh './mvnw.cmd clean compile -e'
-        }
+    if(env.GIT_BRANCH=='release-v0.01'){
+        echo 'buena es de la rama release'
     }
+    else if(env.GIT_BRANCH=='feature*' || env.GIT_BRANCH=='develop'){
+        echo 'no es de la rama realease'
 
-    if(util.validateStage('test'))
-    {
-        stage('test'){
-            bat './mvnw.cmd clean test -e'
-        }
-    }
+    } 
 
-   if(util.validateStage('sonar')) 
-   {
-   stage('sonar') {
-        
-    withSonarQubeEnv(installationName: 'SonarQube') { 
-      bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-    
-            }
-    }
-  } 
-
-    if(util.validateStage('jar'))
-    {
-        stage('jar'){
-            bat './mvnw.cmd clean package -e'
-        }
-    }
-
-     if(util.validateStage('run'))
-    {
-        stage('run'){
-           sh 'JENKINS_NODE_COOKIE=dontKillMe nohup bash mvnw spring-boot:run &'
-        }
-    }
-
-    
   
 
 }
