@@ -59,7 +59,18 @@ def call(){
             bat 'curl -X GET "http://localhost:8081/rest/mscovid/test?msg=testing"'
         }
     }
+  
+     if(util.validateStage('nexusCI'))
+    {
+        stage('nexusCI') {
+            
+            env.STAGE = 'nexusCI'
+            figlet env.STAGE
+            sleep(time: 10, unit: "SECONDS")
 
+           nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'ejemplo-maven-gradle', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\Users\usuario}\.jenkins\workspace\pipeline-deveop\build\DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
+        }
+    }
 
 }
 return this;
