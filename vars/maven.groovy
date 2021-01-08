@@ -1,5 +1,5 @@
 def call(){
-    
+    figlet env.GIT_BRANCH
     if(env.GIT_BRANCH=='release-v0.01'){
         figlet 'buena es de la rama release'
     }
