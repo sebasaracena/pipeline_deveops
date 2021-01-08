@@ -1,13 +1,13 @@
 def call(){
-    figlet 'entro'
-//     if(util.validateStage('build'))
-//     {
-//         stage('build') {
-//             env.STAGE = 'build'
-//            figlet env.STAGE
-//             sh './mvnw.cmd clean compile -e'
-//         }
-//     }
+    figlet 'Jekins ci'
+    if(util.validateStage('build'))
+    {
+        stage('build') {
+            env.STAGE = 'build'
+           figlet env.STAGE
+            sh './mvnw.cmd clean compile -e'
+        }
+    }
 
 //     if(util.validateStage('test'))
 //     {
