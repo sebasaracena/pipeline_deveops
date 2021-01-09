@@ -4,7 +4,7 @@ def call(){
       stage('Downloadnexus') {
        env.STAGE = 'Downloadnexus'
        figlet env.STAGE
-       sh 'curl http://35.199.77.109:8081/repository/realese-v0.1.0/com/devopusach2020/DevOpsUsach2020/1.0.0/DevOpsUsach2020-1.0.0.jar --output DevOpsUsach2020-1.0.0.jar'
+       sh 'curl http://146.83.102.99:8082/repository/ejemplo-maven-gradle/com/devopsusach2020/DevOpsUsach2020/1.0.0/DevOpsUsach2020-1.0.0.jar --output DevOpsUsach2020-1.0.0.jar'
       }
    }
 
